@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using PathologyLabManagementSystem.Areas.User.ViewModels;
 using Models;
+using PathologyLabManagementSystem.Areas.User.ViewModels;
 using Services;
 
 namespace PathologyLabManagementSystem.Areas.User.Controllers
 {
     public class PatientController : Controller
     {
+        private readonly IPatientService _patientService;
+
         public PatientController(IPatientService patientService)
         {
-            PatientService = patientService;
+            _patientService = patientService;
         }
 
-        protected readonly IPatientService PatientService;
         // GET: User/Patient
         public ActionResult Index()
         {
@@ -61,7 +59,7 @@ namespace PathologyLabManagementSystem.Areas.User.Controllers
         [HttpPost]
         public ActionResult AddPatient([Bind(Include = "FirstName,LastName,Age,Address,Sex,Parent_Spouse_Name,Relation,Email,PhoneNumber,MaritalStatus,BloodGroup")]Patient patient)
         {
-            var serviceResponse = PatientService.AddPatientDetails(patient);
+            var serviceResponse = _patientService.AddPatientDetails(patient);
             if (serviceResponse.Status == StatusType.Success)
             {
                 return View();

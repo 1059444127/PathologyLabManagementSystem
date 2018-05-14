@@ -1,8 +1,8 @@
-﻿using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Models;
 
 namespace Repositories
 {
@@ -14,6 +14,7 @@ namespace Repositories
         List<TestAttribute> GetTestAttributes(int testId);
         bool EditTest(Test tst);
     }
+
     public class TestRepository : ITestRepository
     {
         public int AddTest(Test tstObj)
@@ -157,8 +158,5 @@ namespace Repositories
 
             return response;
         }
-
-        
     }
-    
 }

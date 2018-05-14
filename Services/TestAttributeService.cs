@@ -1,10 +1,7 @@
-﻿using Models;
-using Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Models;
+using Repositories;
 
 namespace Services
 {
@@ -16,15 +13,13 @@ namespace Services
 
     public class TestAttributeService : ITestAttributeService
     {
+        private readonly ITestAttributeRepository _testAttributeRepo;
+
         #region Constructor
         public TestAttributeService(ITestAttributeRepository testAttributeRepository)
         {
-            TestAttributeRepo = testAttributeRepository;
+            _testAttributeRepo = testAttributeRepository;
         }
-        #endregion
-
-        #region Dependencies
-        protected readonly ITestAttributeRepository TestAttributeRepo;
         #endregion
 
         /// <summary>
@@ -38,17 +33,19 @@ namespace Services
             {
                 Status = StatusType.Failure
             };
+
             try
-            { 
-            if (TestAttributeRepo.AddAttributes(Obj))
             {
-                response.Status = StatusType.Success;
+                if (_testAttributeRepo.AddAttributes(Obj))
+                {
+                    response.Status = StatusType.Success;
+                }
             }
-            }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 response.Error = ex;
             }
+
             return response;
         }
 
@@ -58,9 +55,10 @@ namespace Services
             {
                 Status = StatusType.Failure
             };
+
             try
             {
-                if (TestAttributeRepo.EditTestAttribute(lstAttr))
+                if (_testAttributeRepo.EditTestAttribute(lstAttr))
                 {
                     response.Status = StatusType.Success;
                 }
@@ -69,6 +67,7 @@ namespace Services
             {
                 response.Error = ex;
             }
+
             return response;
         }
     }

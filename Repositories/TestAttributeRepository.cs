@@ -1,11 +1,8 @@
-﻿using Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Models;
 
 namespace Repositories
 {
@@ -14,6 +11,7 @@ namespace Repositories
         bool AddAttributes(IEnumerable<TestAttribute> Obj);
         bool EditTestAttribute(List<TestAttribute> lstAttr);
     }
+
     public class TestAttributeRepository : ITestAttributeRepository
     {
         public bool AddAttributes(IEnumerable<TestAttribute> Obj)

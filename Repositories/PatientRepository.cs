@@ -1,8 +1,8 @@
-﻿using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Models;
 
 namespace Repositories
 {
@@ -11,6 +11,7 @@ namespace Repositories
         List<Patient> GetAllPatients();
         bool AddPatient(Patient patient);
     }
+
     public class PatientRepository : IPatientRepository
     {
         public List<Patient> GetAllPatients()

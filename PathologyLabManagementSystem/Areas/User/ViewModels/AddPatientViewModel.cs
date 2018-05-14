@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PathologyLabManagementSystem.Areas.User.ViewModels
@@ -13,11 +10,13 @@ namespace PathologyLabManagementSystem.Areas.User.ViewModels
         {
            
         }
-        [StringLength(20)]
+
         [Required(ErrorMessage = "Please enter first name")]
-        public string FirstName { get; set; }
         [StringLength(20)]
+        public string FirstName { get; set; }
+
         [Required(ErrorMessage = "Please enter Last name")]
+        [StringLength(20)]
         public string LastName { get; set; }
 
         [Required]
@@ -44,17 +43,20 @@ namespace PathologyLabManagementSystem.Areas.User.ViewModels
         public string Relation { get; set; }
 
         public string Maritalstatus { get; set; }
+
         public List<SelectListItem> LstMaritalStatus { get; set; }
 
         public string Email { get; set; }
 
         public string BloodGroup { get; set; }
+
         public List<SelectListItem> LstBloodGroup { get; set; }
-        
     }
+
     public class Sex
     {
         public int Id { get; set; }
+
         public string Text { get; set; }
     }
     
